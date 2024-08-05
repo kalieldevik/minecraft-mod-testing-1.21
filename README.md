@@ -26,18 +26,18 @@
 ### Process for Setting up Files
 
 #### Step 1
-- Navigate to src/main/java/net/name/modid/ClassName.java`
+- Navigate to `src/main/java/net/name/modid/ClassName.java`
   - Remove unnecessary code (usually comments if using template)
   - Make sure to correct class name if you used a template!! Do this for the main mod file, and the **ClassNameDataGenerator** Java file
   - Create a new line directly under the class creation that includes the following code:
-    - public static final String MOD_ID = "yourmodid";`
+    - `public static final String MOD_ID = "yourmodid";`
     - This code will help make your modding experience much easier. By representing your mod id with the name of this constant string, "**MOD_ID**", you can reduce the amount of typing when you need to inevitably enter your mod id in many different places
   - Create a new Java class with the name "**ClassNameClient**" in the same directory as your other files
     - In the class declaration line after the name, add in the following code: 
       - `implements ClientModInitializer`
     - If you use your tab key when typing this, it should also add in a package import at the top. If it does not, you also need to add in the following code: 
       - import net.fabricmc.api.ClientModInitializer;
-    - If you hover over `ClientModInitializer` in your class declaration line, it should give you the option to implement the `onInitializeClient` method. If it does not do this, add in the following code into your class:
+    - If you hover over `ClientModInitializer` in your class declaration line, it should give you the option to implement the `onInitializeClient()` method. If it does not do this, add in the following code into your class:
       - ```
         @Override
         public void onInitializeClient() {
