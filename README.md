@@ -1,5 +1,7 @@
 # Learning and Testing Minecraft Mods!
 
+Based on https://docs.fabricmc.net/develop/ and Modding by Kaupenjoe YouTube videos
+
 ## Process For Initial Setup
 
 ### Process For Setting Up Template
@@ -29,7 +31,7 @@
 
 #### Step 1
 - Navigate to `src/main/java/net/name/modid/ClassName.java`
-  - Remove unnecessary code (usually comments if using template)
+  - Remove unnecessary code (usually comments and a random `LOGGER.info` example if using template)
   - Make sure to correct class name if you used a template!! Do this for the main mod file, and the **ClassNameDataGenerator** Java file
   - Create a new line directly under the class creation that includes the following code:
     - `public static final String MOD_ID = "yourmodid";`
