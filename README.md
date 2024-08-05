@@ -37,7 +37,7 @@
       - `implements ClientModInitializer`
     - If you use your tab key when typing this, it should also add in a package import at the top. If it does not, you also need to add in the following code: 
       - import net.fabricmc.api.ClientModInitializer;
-    - If you hover over ClientModInitializer` in your class declaration line, it should give you the option to implement the `onInitializeClient` method. If it does not do this, add in the following code into your class:
+    - If you hover over `ClientModInitializer` in your class declaration line, it should give you the option to implement the `onInitializeClient` method. If it does not do this, add in the following code into your class:
       - ```
         @Override
         public void onInitializeClient() {
