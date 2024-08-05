@@ -1,5 +1,7 @@
 # Learning and Testing Minecraft Mods!
 
+## Process For Initial Setup
+
 ### Process For Setting Up Template
 - If using the Fabric template mod generator:
   - Input desired mod name
@@ -18,9 +20,9 @@
 - Open project in IntelliJ
   - After doing this: 
     - Build the project (using the icon or CTRL + F9`)
-    - Go to `File > Project Structure` and ensure **SDK** and **Language Level** are both correct. For this it should be **17**
-    - Go to `File > Settings > Build, Execution, Deployment > Gradle` and ensure the **Gradle JVM** is set to the correct version. **JAVA_HOME** should be using version **17**
-      - If **JAVA_HOME** does *not* have version **17**, you can set **Project SDK** to **17**
+    - Go to `File > Project Structure` and ensure **SDK** and **Language Level** are both correct. For this it should be **21**
+    - Go to `File > Settings > Build, Execution, Deployment > Gradle` and ensure the **Gradle JVM** is set to the correct version. **JAVA_HOME** should be using version **21**
+      - If **JAVA_HOME** does *not* have version **21**, you can set **Project SDK** to **21**
 
 
 ### Process for Setting up Files
@@ -59,4 +61,36 @@
   - Edit **license**
   - Edit **entrypoints** to correspond to your Java class names
     - Add in ```"client"``` which will include ```"net.name.modid.ClassNameClient"```
-  - Edit **depends** to correspond to Java version. For this it will be **>=17**
+  - Edit **depends** to correspond to Java version. For this it will be **>=21**
+
+#### Step 4
+- Navigate to your main directory, and you will find the `gradle.properties` file
+  - You can edit the "Mod Properties" section to correspond to your mod.
+    - The first change should be the `mod_version`
+      - The version itself is intuitive enough, just set it to the current iteration of your mod. However, it may be good practice to put a hyphen, and then the Minecraft version your mod is compatible with after as well to give more information and be more user friendly
+        - For example, `mod_version=mod.version-minecraft.version` (don't keep the alpha characters in the version)
+  - **After editing anything gradle-related**
+    - Press "Load Gradle Changes" to ensure everything works correctly.
+      - This is located in the upper right with a small elephant icon.
+      - **If you get an incompatible Java version error after loading Gradle and building**: refer to earlier steps in this process and ensure you are on the correct Java version for the Minecraft version you're running
+  - After doing this, open the terminal and type `./gradlew genSources` (may take a couple minutes to download and build)
+    - This is done to download sources that allow you to go into the source code to do cool stuff!
+
+#### Step 5
+- Navigate to `src/main/java/net/name/modid/mixin`
+  - Open `ExampleMixin.java`
+  - Middle mouse click on **MinecraftServer** found in `@Mixin(MinecraftServer.class)`
+    - This will open `MinecraftServer.class` with a blue line at the top. In this blue line click on **Choose Sources...** in the upper right
+      - This will open up a new window, and you can select the correct file. The correct file will be same name as the one automatically selected, but will have **-sources** at the end before the file extension.
+
+#### Step 6
+- To initially run the client:
+  - Click the Gradle tab on the right
+  - Expand the following: `Tasks > Fabric`
+  - Double-click on **runClient** and the game should start!
+    - You will get a 401 error when you launch the game. This is completely normal when using the dev environment and can be ignored
+- After you've run it using the above method, restart IntelliJ
+  - Once you've restarted, in the upper right, there is a dropdown to the left of the Run button
+  - Select **Minecraft Client** from the dropdown, and you can start the game using the Run button!
+
+### After this, the initial setup is complete! It is recommended to make a copy of this mod to reduce the amount of times you may need to go through this process for any subsequent mods you create.
